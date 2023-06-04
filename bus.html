@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: rgb(195, 197, 179);
+            /* /* align-items: center; */
+            text-align: center; 
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+        }
+        form{
+            width: 50%;
+            background-color: white;
+            /* align-items: center ; */
+            padding: 20px;
+            margin-top: 10px;
+            position:fixed;
+            left:25%;
+        }
+        span{
+            color: red;
+        }
+        #ttl{
+            color: rgb(226, 131, 7);
+            font-weight: bolder;
+            font-size: medium;
+            
+        }
+        #btn{
+            margin-top: 10px;
+            background-color: rgb(226, 131, 7) ;
+            font-weight: bolder;
+            font-size: small;
+            color: white;
+            padding: 7px;
+            border: none ;
+        }
+        input{
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+    
+        <!-- name , age sex date of journey cell phone no. email id listbox of originn and destinATION  progrees bar -->
+        <h1>Bus Ticket</h1>
+        <form align="center" action="Project.html" method="post" onsubmit="return validateForm()">
+            <fieldset>
+                <legend>Ticket Registration</legend>
+                <table align="center">
+                    <tr>
+                        <td id="ttl">Name :</td>
+                        
+                        <td><input  id="nm" type="text" placeholder="Name" pattern="[A-Za-z]{3,0}" title="name must be valid" required />
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Age :</td>
+                        <td><input onclick="pgs(age)" id="age" type="number" placeholder="Age" required/><b><span id="ne"></span></b></td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Mobile :</td>
+                        <td>
+                        <input id="ph" onclick="pgs()" type="number" placeholder="99xxxxxxx" required/><b><span id="me"></span></b></td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Sex :</td>
+                        <td onclick="pgs()">
+                        M:<input type="radio" name="gender" />
+                        F:<input type="radio" name="gender" />
+                        T.S:<input type="radio" name="gender" /></td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Email :</td>
+                        <td><input onclick="pgs()" id="em" type="email" placeholder="ankit@gmail.com" required/></td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Date of Journey</td>
+                        <td>
+                            <input id="dj" onclick="pgs()" type="date" data-format-string="Do MMMM YYYY" placeholder="" required/>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Origin</td>
+                        <td>
+                            <select onclick="pgs()" id="og" name="" id="" required>
+                                <option value="">Origin</option>
+                                <option value="">Xyz</option>
+                                <option value="">Pqr</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ttl">Destination</td>
+                        <td>
+                            <select onclick="pgs()" id="ds" name="" id=""required>
+                                <option value="">Destination</option>
+                                <option value="">Jkl</option>
+                                <option value="">Tuv</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input id="btn" type="submit" /></td>
+                        <td><input id="btn" type="reset" /></td>
+                    </tr>
+                </table>
+                <progress id="pb" style="width: 100%; height: 50px" id="file" value="" max="100"></progress>
+                
+            </fieldset>
+            
+        </form>
+        <script>
+            var pb = document.getElementById("pb");
+            function pgs(itm){
+                var item = document.getElementById(itm); 
+                console.log(item.value);
+                if(item.value==true){
+                    pb.value+=10;
+                }
+            }
+            
+            function validateForm(){
+                var rt = true;
+                var age = document.getElementById("age");
+                var Mobile = document.getElementById("ph");
+                // var sex = document.getElementById("nm");
+                var email = document.getElementById("em");
+                var dj = document.getElementById("dj");
+                var origin = document.getElementById("og");
+                var dst = document.getElementById("ds");
+
+                if( 21 < age && age <71){
+                    // addEventListener("click", function(event){
+                    // document.getElementById("pb").value += 50;})
+                    if(age.value== true){
+                        pb.value+=10;
+                    }
+                    
+                }
+                else{
+                    document.getElementById("ne").innerHTML = "**age should be between 21 to 71";
+                    rt = false;
+                }
+                if(Mobile.length == 10){
+
+                }
+                else{
+                    document.getElementById("me").innerHTML = "**mobile no. should be 10 digits";
+                    rt = false;
+                }
+                return rt;
+            }
+        </script>
+    
+</body>
+</html>
